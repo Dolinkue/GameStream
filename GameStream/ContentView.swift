@@ -88,69 +88,6 @@ struct LoginRegisterView: View {
 }
 
 
-struct LogInView: View {
-    
-    
-    @State var email = ""
-    @State var password = ""
-    
-    var body: some View {
-    
-        
-        
-        ScrollView {
-            
-            VStack(alignment: .leading) {
-                
-                Text("Correo Electronico").foregroundColor(Color("Dark-sian"))
-                
-                ZStack(alignment: .leading){
-                    
-                    if email.isEmpty {
-                    
-                    Text("email").font(.caption).foregroundColor(.gray)
-                    }
-                    TextField("", text: $email).foregroundColor(.white)
-                    
-                }
-                
-                Divider().frame(height: 1).background(Color("Dark-sian")).padding(.bottom)
-                
-                Text("Contrasena").foregroundColor(Color("Dark-sian"))
-                
-                ZStack(alignment: .leading){
-                    
-                    if password.isEmpty {
-                    
-                    Text("*****").font(.caption).foregroundColor(.gray)
-                    }
-                    SecureField("", text: $password).foregroundColor(.white)
-                    
-                }
-                
-                Divider().frame(height: 1).background(Color("Dark-sian")).padding(.bottom)
-                
-                
-                
-                
-                
-            }.padding(.horizontal, 77)
-                
-        }
-        
-        
-    }
-}
-
-
-struct RegisterView: View {
-    
-    var body: some View {
-    
-        Text("soy la vista de registro")
-    }
-}
-
 
 
 
