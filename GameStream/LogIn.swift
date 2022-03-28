@@ -14,9 +14,18 @@ struct LogInView: View {
     
     @State var email = ""
     @State var password = ""
+    @State var isScreamHomeActive = false
+    
+    func iniciarSesion()  {
+        isScreamHomeActive = true
+    }
+    
+    
     
     var body: some View {
     
+        
+        
         
         
         ScrollView {
@@ -115,15 +124,24 @@ struct LogInView: View {
                 
             }.padding(.horizontal, 77)
                 
+            
+            
         }
+        
+        NavigationLink(
+                                destination: Home(),
+                                isActive: $isScreamHomeActive,
+                                label: {
+                                    EmptyView()
+                                })
         
         
     }
+    
+    
 }
 
-func iniciarSesion()  {
-    print("inicia sesion")
-}
+
 
 func facebook() {
     print("Facebook")

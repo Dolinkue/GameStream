@@ -10,27 +10,29 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         
-        ZStack {
-            
-            Spacer()
-            
-            
-            Color(red: 19/255, green: 30/255, blue: 53/255, opacity: 1.0).ignoresSafeArea()
-            
-            
-            VStack {
+        NavigationView {
+            ZStack {
                 
-                Image("appLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.bottom, 42)
-            
+                Spacer()
                 
                 
+                Color(red: 19/255, green: 30/255, blue: 53/255, opacity: 1.0).ignoresSafeArea()
                 
-                LoginRegisterView()
+                
+                VStack {
+                    
+                    Image("appLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.bottom, 42)
+                
+                    
+                    
+                    
+                    LoginRegisterView()
+                    
+                    
+                }
                 
                 
-         }
-            
-            
+            }.navigationBarHidden(true)
         }
     }
 }
