@@ -97,8 +97,6 @@ struct LoginRegisterView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-        
-        Image("04_swiftui-apps-ios-pantalla1").resizable()
 
         
     }
