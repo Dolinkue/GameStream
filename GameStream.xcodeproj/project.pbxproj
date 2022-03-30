@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F12F9A627F3BA56005293E7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12F9A527F3BA56005293E7 /* Model.swift */; };
+		6F12F9A827F3BA67005293E7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12F9A727F3BA67005293E7 /* ViewModel.swift */; };
 		6F918FAB27EE485B00DE2D4C /* GameStreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F918FAA27EE485B00DE2D4C /* GameStreamApp.swift */; };
 		6F918FAD27EE485B00DE2D4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F918FAC27EE485B00DE2D4C /* ContentView.swift */; };
 		6F918FAF27EE485E00DE2D4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F918FAE27EE485E00DE2D4C /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F12F9A527F3BA56005293E7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		6F12F9A727F3BA67005293E7 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		6F918FA727EE485B00DE2D4C /* GameStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F918FAA27EE485B00DE2D4C /* GameStreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStreamApp.swift; sourceTree = "<group>"; };
 		6F918FAC27EE485B00DE2D4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +42,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F12F9A227F3AEC3005293E7 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6F918FAC27EE485B00DE2D4C /* ContentView.swift */,
+				6F918FBA27F0BE4300DE2D4C /* LogIn.swift */,
+				6F918FBC27F0BEB300DE2D4C /* RegisterView.swift */,
+				6F918FC027F236D500DE2D4C /* Home.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6F12F9A327F3BA19005293E7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6F12F9A527F3BA56005293E7 /* Model.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		6F12F9A427F3BA2C005293E7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6F12F9A727F3BA67005293E7 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		6F918F9E27EE485B00DE2D4C = {
 			isa = PBXGroup;
 			children = (
@@ -57,13 +88,12 @@
 		6F918FA927EE485B00DE2D4C /* GameStream */ = {
 			isa = PBXGroup;
 			children = (
+				6F12F9A427F3BA2C005293E7 /* ViewModel */,
+				6F12F9A327F3BA19005293E7 /* model */,
+				6F12F9A227F3AEC3005293E7 /* view */,
 				6F918FAA27EE485B00DE2D4C /* GameStreamApp.swift */,
-				6F918FAC27EE485B00DE2D4C /* ContentView.swift */,
 				6F918FAE27EE485E00DE2D4C /* Assets.xcassets */,
 				6F918FB027EE485E00DE2D4C /* Preview Content */,
-				6F918FBA27F0BE4300DE2D4C /* LogIn.swift */,
-				6F918FBC27F0BEB300DE2D4C /* RegisterView.swift */,
-				6F918FC027F236D500DE2D4C /* Home.swift */,
 			);
 			path = GameStream;
 			sourceTree = "<group>";
@@ -149,8 +179,10 @@
 				6F918FAD27EE485B00DE2D4C /* ContentView.swift in Sources */,
 				6F918FBD27F0BEB300DE2D4C /* RegisterView.swift in Sources */,
 				6F918FC127F236D500DE2D4C /* Home.swift in Sources */,
+				6F12F9A627F3BA56005293E7 /* Model.swift in Sources */,
 				6F918FBB27F0BE4300DE2D4C /* LogIn.swift in Sources */,
 				6F918FAB27EE485B00DE2D4C /* GameStreamApp.swift in Sources */,
+				6F12F9A827F3BA67005293E7 /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

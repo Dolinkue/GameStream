@@ -129,6 +129,8 @@ struct LogInView: View {
         }
         
         NavigationLink(
+            
+            //aca te envia a home()
                                 destination: Home(),
                                 isActive: $isScreamHomeActive,
                                 label: {
