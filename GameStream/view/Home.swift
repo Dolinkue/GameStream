@@ -20,8 +20,7 @@ import AVKit
         
         TabView(selection: $tabseleccionado){
             
-            Text("Pantalla Juegos")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            GamesView()
                 .tabItem {
                     
                     Image(systemName: "gamecontroller")
