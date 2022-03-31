@@ -41,6 +41,9 @@ struct GameView: View {
                                        
                                             Gallery(imgsUrl:imgsUrl)
                                             
+                                            
+                                            JuegosSimilares()
+                                            
                                         
                                         
                                         }.frame( maxWidth: .infinity)
@@ -177,6 +180,8 @@ struct Gallery:View {
             
             ScrollView(.horizontal){
               
+                
+                
                 LazyHGrid(rows:formaGrid,spacing:8){
                     
                     
@@ -212,6 +217,92 @@ struct Gallery:View {
     }
 }
 
+struct JuegosSimilares:View {
+    
+    @ObservedObject var todosLosVideojuegos = ViewModel()
+    
+    @State var gameviewIsActive: Bool = false
+    @State var url:String = ""
+    @State var titulo:String = ""
+    @State var studio:String = ""
+    @State var calificacion: String = ""
+    @State var anoPublicacion: String = ""
+    @State var descripcion:String = ""
+    @State var tags:[String] = [""]
+    @State var imgsUrl: [String] = [""]
+    
+    let formaGrid = [
+    
+        GridItem(.flexible())
+    
+    ]
+    
+    var body: some View{
+        
+        
+        VStack(alignment:.leading ){
+            Text("Juegos similares")
+                .foregroundColor(.white)
+                .font(.title)
+                .padding(.leading)
+            
+            ScrollView(.horizontal){
+                
+                // matriz vertical de como se va a mostrar
+                LazyHGrid(rows:formaGrid,spacing:8){
+                    
+                    ForEach(todosLosVideojuegos.gamesInfo, id: \.self){
+                        
+                        juego in
+                        
+                        Button(action: {
+                            // aca cambio nombre de variables
+                            url = juego.videosUrls.mobile
+                            titulo = juego.title
+                            studio = juego.studio
+                            calificacion = juego.contentRaiting
+                            anoPublicacion = juego.publicationYear
+                            descripcion = juego.description
+                            tags = juego.tags
+                            imgsUrl = juego.galleryImages
+                 
+                            print("Pulse el juego \(titulo)")
+                            
+                           
+                            gameviewIsActive = true
+                            
+                        }, label: {
+                            
+                            // se bajo una depencia para que funcione desde una URL
+                            KFImage(URL(string: juego.galleryImages[0])!)
+                                                                .resizable()
+                                                                .aspectRatio(contentMode: .fit)
+                                                                
+
+                        
+                        })
+                        
+                    }
+                    
+                }
+                
+            }.frame( height: 180)
+            
+        }.frame( maxWidth: .infinity, alignment: .leading)
+        
+        
+        
+        
+        NavigationLink( destination: GameView(url: url, titulo: titulo, studio: studio, calificacion: calificacion, anoPublicacion: anoPublicacion, descripcion:descripcion , tags: tags, imgsUrl: imgsUrl),
+                        isActive: $gameviewIsActive,
+                        label: {
+                            EmptyView()
+                        })
+        
+        
+        
+    }
+    }
 
 
 struct GameView_Previews: PreviewProvider {
