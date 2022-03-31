@@ -15,7 +15,7 @@ struct GamesView:View {
     
     
     // variables que capturan los datos del view model
-    @State var gameviewIsActive: Bool = false
+        @State var gameviewIsActive: Bool = false
         @State var url:String = ""
         @State var titulo:String = ""
         @State var studio:String = ""
@@ -70,7 +70,7 @@ struct GamesView:View {
                                 print("Pulse el juego \(titulo)")
                                 
                                
-                                
+                                gameviewIsActive = true
                                 
                             }, label: {
                                 
@@ -81,38 +81,27 @@ struct GamesView:View {
                                                                     .clipShape(RoundedRectangle.init(cornerRadius: 4))
                                                                 
                                                                     .padding(.bottom,12)
-                                
-                                
+    
                             
                             })
                             
                         }
                         
-                        
-                        
                     }
                     
-                    
-                    
-                    
-                    
-                    
                 }
-                
-                
-                
-                
-                
                 
             }.padding(.horizontal,6)
             
             
             
             
-            
-            
-           
-            
+            NavigationLink( destination: GameView(url: url, titulo: titulo, studio: studio, calificacion: calificacion, anoPublicacion: anoPublicacion, descripcion:descripcion , tags: tags, imgsUrl: imgsUrl),
+                            isActive: $gameviewIsActive,
+                            label: {
+                                EmptyView()
+                            })
+                        
             
             
             
