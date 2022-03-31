@@ -7,6 +7,10 @@
 
 import SwiftUI
 import AVKit
+import Kingfisher
+
+
+var game: Game!
 
 struct GameView: View {
     
@@ -35,6 +39,7 @@ struct GameView: View {
                                             videoInfo(titulo:titulo,studio:studio,calificacion:calificacion,anoPublicacion:anoPublicacion,descripcion:descripcion,tags:tags)
                                                 .padding(.bottom)
                                        
+                                            Gallery(imgsUrl:imgsUrl)
                                             
                                         
                                         
@@ -79,7 +84,7 @@ struct videoInfo:View {
         
         VStack(alignment:.leading ){
             
-          Text("\(titulo)")
+            Text("\(titulo)")
             .foregroundColor(.white)
             .font(.largeTitle)
             .padding(.leading)
@@ -140,6 +145,67 @@ struct videoInfo:View {
             
         }.frame( maxWidth: .infinity,  alignment: .leading)
         
+        
+        
+        
+    }
+}
+
+struct Gallery:View {
+    
+    
+    var imgsUrl:[String]
+    
+    let formaGrid = [
+    
+        GridItem(.flexible())
+    
+    ]
+    
+    
+    var body: some View{
+        
+        
+        
+        VStack(alignment:.leading ){
+           
+           Text("GALERÍA")
+            .foregroundColor(.white)
+            .font(.title)
+            .padding(.leading)
+            
+            
+            ScrollView(.horizontal){
+              
+                LazyHGrid(rows:formaGrid,spacing:8){
+                    
+                    
+                    ForEach(imgsUrl,id: \.self){
+                        
+                       imgUrl in
+                        
+                       //Deplegar imagenes del servidor por medio de url
+                        
+                        KFImage(URL(string: imgUrl))
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                        
+                    }
+                    
+                    
+                    
+                }
+                
+                
+                
+                
+            }.frame( height: 180)
+            
+            
+            
+            
+            
+        }.frame( maxWidth: .infinity, alignment: .leading)
         
         
         

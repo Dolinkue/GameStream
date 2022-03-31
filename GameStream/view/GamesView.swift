@@ -57,7 +57,7 @@ struct GamesView:View {
                             juego in
                             
                             Button(action: {
-                                
+                                // aca cambio nombre de variables 
                                 url = juego.videosUrls.mobile
                                 titulo = juego.title
                                 studio = juego.studio
