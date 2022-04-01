@@ -21,8 +21,9 @@ struct ContentView: View {
                 
                 VStack {
                     
-                    Image("appLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.bottom, 42)
-                
+                    
+                    Image("AppLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.bottom, 42)
+
                     
                     
                     
