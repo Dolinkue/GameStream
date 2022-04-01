@@ -109,7 +109,7 @@ import AVKit
             VStack {
                 
                 
-                Image("appLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.vertical, 11.0)
+                Image("AppLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.vertical, 11.0)
                 
                 
                
@@ -147,14 +147,18 @@ import AVKit
     struct SubModuloHome:View {
         
         
-    @State var isGameInfoEmpty = false
-    @State var textoBusqueda = ""
-        
-    @State var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
-        
-    @State var isPlayerActive = false
-        
-    let urlVideos:[String] = ["https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256671638/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256720061/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256814567/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256705156/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256801252/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256757119/movie480.mp4"]
+        @State var textoBusqueda:String = ""
+            @ObservedObject var juegoEncontrado = SearchGame()
+            @State var isGameViewActive = false
+            @State var isGameInfoEmpty = false
+            @State var url:String = ""
+            @State var titulo:String = ""
+            @State var studio:String = ""
+            @State var calificacion:String = ""
+            @State var anoPublicacion:String = ""
+            @State var descripcion:String = ""
+            @State var tags:[String] = [""]
+            @State var imgsUrl:[String] = [""]
 
 
         
@@ -212,9 +216,7 @@ import AVKit
                             
                             
                             
-                            Button(action:{ url = urlVideos[0]
-                                print("URL: \(url)")
-                                isPlayerActive = true
+                            Button(action:{ watchGame(name: "The Witcher 3")
                             }, label: {
                                 
                                 VStack(spacing: 0) {
@@ -319,144 +321,150 @@ import AVKit
                             
                             HStack{
                                 
-                                Button(action: {url = urlVideos[1]
+                                Button(action: {watchGame(name: "Abzu")}, label: {
+                                                        
+                                                        
+                                                        
+                                                        Image("Abzu").resizable().scaledToFit().frame(width: 240, height: 135)
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    })
+                                                    
+                                                    Button(action: {watchGame(name: "Crash Bandicoot")}, label: {
+                                                        
+                                                        
+                                                        
+                                                        Image("Crash Bandicoot").resizable().scaledToFit().frame(width: 240, height: 135)
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    })
+                                                    
+                                                    
+                                                    Button(action: {watchGame(name: "DEATH STRANDING")}, label: {
+                                                        
+                                                        
+                                                        
+                                                        Image("DEATH STRANDING").resizable().scaledToFit().frame(width: 240, height: 135)
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    })
+                                                }
+                                            }
+                                            
+                                            
+                                            
+                                            Text("VIDEOS QUE PODRIAN GUSTARTE").font(.title3).foregroundColor(.white).bold().frame(minWidth: 0, maxWidth: .infinity,alignment: .leading)
+                                            
+                                            ScrollView(.horizontal,showsIndicators: false){
+                                                
+                                                
+                                                HStack{
+                                                    
+                                                    Button(action: {watchGame(name: "Cuphead")}, label: {
+                                                        
+                                                        
+                                                        
+                                                        Image("Cuphead").resizable().scaledToFit().frame(width: 240, height: 135)
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    })
+                                                    
+                                                    Button(action: {watchGame(name: "Hades")}, label: {
+                                                        
+                                                        
+                                                        
+                                                        Image("Hades").resizable().scaledToFit().frame(width: 240, height: 135)
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    })
+                                                    
+                                                    
+                                                    Button(action: {watchGame(name: "Grand Theft Auto V")}, label: {
+                                                        
+                                                        
+                                                        
+                                                        Image("Grand Theft Auto V").resizable().scaledToFit().frame(width: 240, height: 135)
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    })
+                                                }
+                                            }
+                                            
+                                            
+                                            // para agregar insets a scrollview
+                                            Color.clear.frame(width: 1, height: 8, alignment: .center)
+                                            
+                                            
+                                        }
                                         
-                                        isPlayerActive = true}, label: {
-                                    
-                                    
-                                    
-                                    Image("Abzu").resizable().scaledToFit().frame(width: 240, height: 135)
-                                    
-                                    
-                                    
-                                    
-                                })
-                                
-                                Button(action: {url = urlVideos[2]
                                         
-                                        isPlayerActive = true}, label: {
-                                    
-                                    
-                                    
-                                    Image("Crash Bandicoot").resizable().scaledToFit().frame(width: 240, height: 135)
-                                    
-                                    
-                                    
-                                    
-                                })
-                                
-                                
-                                Button(action: {url = urlVideos[3]
+                                        NavigationLink(
+                                            destination: GameView(url: url, titulo: titulo, studio: studio, calificacion: calificacion, anoPublicacion: anoPublicacion, descripcion: descripcion, tags: tags, imgsUrl: imgsUrl)
+                                            ,
+                                            isActive: $isGameViewActive,
+                                            label: {
+                                                
+                                                
+                                                EmptyView()
+                                            })
                                         
-                                        isPlayerActive = true}, label: {
-                                    
-                                    
-                                    
-                                    Image("DEATH STRANDING").resizable().scaledToFit().frame(width: 240, height: 135)
-                                    
-                                    
-                                    
-                                    
-                                })
-                            }
-                        }
-                      
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                       // NO
-                        
-                        
-                        Text("VIDEOS QUE PODRIAN GUSTARTE").font(.title3).foregroundColor(.white).bold().frame(minWidth: 0, maxWidth: .infinity,alignment: .leading)
-                        
-                        ScrollView(.horizontal,showsIndicators: false){
-                            
-                            
-                            HStack{
-                                
-                                Button(action: {url = urlVideos[4]
                                         
-                                        isPlayerActive = true}, label: {
-                                    
-                                    
-                                    
-                                    Image("Cuphead").resizable().scaledToFit().frame(width: 240, height: 135)
-                                    
-                                    
-                                    
-                                    
-                                })
-                                
-                                Button(action: {url = urlVideos[5]
                                         
-                                        isPlayerActive = true}, label: {
-                                    
-                                    
-                                    
-                                    Image("Hades").resizable().scaledToFit().frame(width: 240, height: 135)
-                                    
-                                    
-                                    
-                                    
-                                })
-                                
-                                
-                                Button(action: {url = urlVideos[6]
                                         
-                                        isPlayerActive = true}, label: {
-                                    
-                                    
-                                    
-                                    Image("Grand Theft Auto V").resizable().scaledToFit().frame(width: 240, height: 135)
+                                    }
                                     
                                     
                                     
                                     
-                                })
-                                
-                                
-                                
-                                
-                                
-                            }
-                        }
-                        
-                      
-                        // para agregar insets a scrollview y este más arriba (hay más opciones, por mientras un color)
-                        Color.clear.frame(width: 1, height: 8, alignment: .center)
-                        
-            
-            
-    }
+                                    
+                                    func watchGame(name:String)  {
+                                        
+                                        juegoEncontrado.search(gameName: name)
+                                        
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+                                            
+                                            
+                                            print("Cantidad E: \(juegoEncontrado.gameInfo.count)")
+                                            if juegoEncontrado.gameInfo.count == 0{
+                                                
+                                                print("No se encontro ningun juego llamado \(name)")
+                                                
+                                                isGameInfoEmpty = true
+                                                
+                                            }else{
+                                                
+                                                url = juegoEncontrado.gameInfo[0].videosUrls.mobile
+                                                titulo = juegoEncontrado.gameInfo[0].title
+                                                studio = juegoEncontrado.gameInfo[0].studio
+                                                calificacion = juegoEncontrado.gameInfo[0].contentRaiting
+                                                anoPublicacion = juegoEncontrado.gameInfo[0].publicationYear
+                                                descripcion = juegoEncontrado.gameInfo[0].description
+                                                tags = juegoEncontrado.gameInfo[0].tags
+                                                imgsUrl = juegoEncontrado.gameInfo[0].galleryImages
+                                                
+                                                
+                                                isGameViewActive = true
+                                            }
+                                        }
+                                        
+                                        
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                }
 
-        NavigationLink(
-                    destination: VideoPlayer(player:
-                            AVPlayer(url:  URL(string: url)!))
-                            .frame(width: 400, height: 300)
-                        ,
-                    isActive: $isPlayerActive,
-                    label: {
-
-
-                        EmptyView()
-                    })
-
-    }
-        
-        func watchGame(name: String) {
-            print("buscar juego ")
-            
-            isGameInfoEmpty = true
-            
-        }
-        
-
-    }
