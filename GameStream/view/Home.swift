@@ -31,8 +31,7 @@ import AVKit
             
             
             
-            Text("Pantalla Perfil")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            ProfileView()
                 .tabItem {
                     
                     Image(systemName: "person")

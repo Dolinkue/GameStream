@@ -86,7 +86,7 @@ struct Favorite:View {
                                                                 
                                                                     .padding(.bottom,12)
     
-                                        Image(systemName: "play.circle.fill").resizable().foregroundColor(.white).frame(width: 42.0, height: 42.0)
+                                        
                             }
                                     Text(juego.title).frame(minWidth: 0,  maxWidth: .infinity,  alignment: .leading).background(Color.gray)
                                     
