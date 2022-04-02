@@ -111,7 +111,7 @@ struct ModuloAjustes:View {
                     .foregroundColor(Color.white)
                     
                         Spacer()
-                    
+                    //la palanca que cambia
                         Toggle("", isOn: $isToggleOn)
                     
                     }.padding()
@@ -147,13 +147,13 @@ struct ModuloAjustes:View {
             .clipShape(RoundedRectangle(cornerRadius: 1.0)).padding(.horizontal, 8.0)
                 
                 
-//            NavigationLink(
-//                destination: EditProfileView()
-//                ,
-//                isActive: $isEditProfileViewActive,
-//                label: {
-//                    EmptyView()
-//                })
+            NavigationLink(
+                destination: EditProfileView()
+                ,
+                isActive: $isEditProfileViewActive,
+                label: {
+                    EmptyView()
+                })
             
         }
         
