@@ -51,8 +51,7 @@ import AVKit
                 
             
             
-            Text("Pantalla Favoritos")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            Favorite()
                 .tabItem {
                     
                     Image(systemName: "heart")
@@ -136,9 +135,6 @@ import AVKit
         
     }
 
-//    func busqueda() {
-//        print($textoBusqueda)
-//    }
 
     }
 
