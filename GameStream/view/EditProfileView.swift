@@ -108,10 +108,6 @@ struct ModuloEditar:View {
                     .overlay(RoundedRectangle(cornerRadius: 6)
                                 .stroke(Color("Dark-sian"), lineWidth: 3).shadow(color: .white, radius: 6))
             }.padding(.bottom)
-            
-
-            
-            
        
             
         }.padding(.horizontal, 42.0)
@@ -120,14 +116,12 @@ struct ModuloEditar:View {
     }
     
     func actualizarDatos()  {
-        
-        
-
-        
-  print("Guardando y recuperando datos del usuario")
-        
-        
-    }
+            let objetoActualizadorDatos = SaveData()
+            
+            let resultado = objetoActualizadorDatos.guardarDatos(correo: correo, contrasena: contraseña, nombre: nombre)
+            
+            print("Se guardaron los datos con exito?: \(resultado)")
+        }
 }
 
 
