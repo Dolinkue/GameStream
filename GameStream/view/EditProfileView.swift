@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct EditProfileView: View {
+    
+    @State var imagenPerfil: Image? = Image("perfilEjemplo")
+    @State var isCameraActive = false
+    
     var body: some View {
         ZStack {
             
@@ -22,12 +26,18 @@ struct EditProfileView: View {
                         
                             
                         
-                        Button(action: {}, label: {
+                        Button(action: {isCameraActive = true}, label: {
                             ZStack{
                                 
-                                Image("perfilEjemplo").resizable().aspectRatio(contentMode: .fill)
+                                imagenPerfil! .resizable().aspectRatio(contentMode: .fill)
                                     .frame(width: 118.0, height: 118.0)
                                     .clipShape(Circle())
+                                    .sheet(isPresented: $isCameraActive) {
+                                        
+                                        //usamos el view model que bajamos para ejecutar la busqueda de la imagen que queremos de perfil
+                                        SUImagePickerView(sourceType: .photoLibrary, image: self.$imagenPerfil, isPresented: $isCameraActive)
+                                    }
+                                
                                 
                                 Image(systemName: "camera").foregroundColor(.white)
                
@@ -116,6 +126,8 @@ struct ModuloEditar:View {
     }
     
     func actualizarDatos()  {
+        
+        
             let objetoActualizadorDatos = SaveData()
             
             let resultado = objetoActualizadorDatos.guardarDatos(correo: correo, contrasena: contraseña, nombre: nombre)

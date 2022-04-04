@@ -11,6 +11,8 @@ struct ProfileView: View {
     
     
     @State var nombreUsuario:String = "Carmela"
+    @State var imagenPerfil:UIImage = UIImage(named: "perfilEjemplo")!
+    
     
     var body: some View {
        
@@ -32,7 +34,7 @@ struct ProfileView: View {
                         
                        
                           
-                                Image("perfilEjemplo").resizable().aspectRatio(contentMode: .fill)
+                                Image(uiImage: imagenPerfil).resizable().aspectRatio(contentMode: .fill)
                                     .frame(width: 118.0, height: 118.0)
                                     .clipShape(Circle())
                
@@ -57,6 +59,18 @@ struct ProfileView: View {
             
             perform: {
                 
+                //fotoperfil es el nombre que le dimos a la foto en SUImage para guardarla
+                if returnUiImage(named: "fotoperfil") != nil {
+                                
+                        imagenPerfil = returnUiImage(named: "fotoperfil")!
+                
+                    }else{
+                        print("no encontre foto de perfil en base de datos")
+                                
+                            }
+                                
+                
+                
                print("revisando si tengo datos en user defaults")
                 
                 if UserDefaults.standard.object(forKey: "datosUsuario") != nil {
@@ -75,8 +89,25 @@ struct ProfileView: View {
         )
        
    }
+
+    
+    
+    func returnUiImage(named: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
+    }
+    
+    
+    
+    
     
 }
+
+
+
+
 
 struct ModuloAjustes:View {
     
